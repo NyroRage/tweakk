@@ -1,0 +1,25 @@
+{{ $popCat := .Site.Params.PopularCat }}
+<section class="fs-popular-posts">
+    <h2 class="section-title popular-posts-title ignore-toc">Popular Posts</h2>
+    <div class="popular-posts-container">
+        {{ range first 5 (where $.Site.RegularPages "Params.categories" "intersect" (slice $popCat)) }}
+        <article class="post-card popular-post-card">
+            <a href="{{.Permalink}}" >
+                <div class="thumbnail">
+                    <img width="600" height="338" src="{{ .Params.featured_Image | absURL }}" class="attachment-medium size-medium wp-post-image lazyloaded" alt="{{.Title}}">
+                </div>
+            </a>
+            <div class="post-info">
+                {{ with .Params.categories }}
+                <div class="post-category"><a class="post-category-link" href="{{ index . 0 | urlize | absURL }}/"
+                        title="{{ index . 0 }}" >{{ index . 0 }}</a>
+                </div>
+                {{ end }}
+                <h3 class="post-title ignore-toc">
+                    <a href="{{.Permalink}}" >{{.Title}}</a>
+                </h3>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</section>

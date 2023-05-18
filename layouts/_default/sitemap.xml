@@ -1,0 +1,22 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"/css/sitemap.xsl\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+	   	<loc>{{ .Site.BaseURL }}</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+	{{- range $.Site.RegularPages }}
+	{{- if and (ne .Section "google-news") (ne .Section "pages") }}
+	<url>
+	   	<loc>{{ .Permalink | absURL }}</loc>
+		{{ if .Params.updateDate -}}
+        <lastmod>{{ safeHTML ( dateFormat "2006-01-02T15:04:05-07:00" .Params.updateDate ) }}</lastmod>
+		{{ else -}}
+        <lastmod>{{ safeHTML ( dateFormat "2006-01-02T15:04:05-07:00" .Date ) }}</lastmod>
+		{{ end -}}
+		<changefreq>daily</changefreq>
+		<priority>0.7</priority>
+	</url>
+	{{- end }}
+	{{- end }}
+</urlset>

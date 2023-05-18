@@ -1,0 +1,55 @@
+<nav id="mobile-header" class="main-navigation mobile-header-navigation has-branding">
+    <div class="inside-navigation grid-container grid-parent">
+        <div class="site-logo mobile-header-logo">
+            <a href="{{.Site.BaseURL}}" title="{{.Site.Title}}" rel="home" >
+                <img width="380" height="68" src="{{.Site.Params.logo}}" alt="{{.Site.Title}}" class="is-logo-image">
+            </a>
+        </div> <button class="menu-toggle" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="gp-icon icon-menu-bars"><svg viewBox="0 0 512 512" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+                    <path
+                        d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z">
+                    </path>
+                </svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em"
+                    height="1em">
+                    <path
+                        d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z">
+                    </path>
+                </svg></span><span class="screen-reader-text">Menu</span> </button>
+        <div id="mobile-menu" class="main-nav">
+            <ul id="menu-main-navigation" class=" menu sf-menu">
+                {{ range .Site.Menus.main }}
+                {{ if .Children }}
+                <li class="sub-menu menu-item menu-item-has-children">
+                    <a class="children" href="{{ .URL | absURL }}">
+                        {{.Name}}
+                        <span role="button" class="dropdown-menu-toggle" tabindex="0" aria-expanded="true" aria-label="Open Sub-Menu"><span class="gp-icon icon-arrow"><svg viewBox="0 0 330 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M305.913 197.085c0 2.266-1.133 4.815-2.833 6.514L171.087 335.593c-1.7 1.7-4.249 2.832-6.515 2.832s-4.815-1.133-6.515-2.832L26.064 203.599c-1.7-1.7-2.832-4.248-2.832-6.514s1.132-4.816 2.832-6.515l14.162-14.163c1.7-1.699 3.966-2.832 6.515-2.832 2.266 0 4.815 1.133 6.515 2.832l111.316 111.317 111.316-111.317c1.7-1.699 4.249-2.832 6.515-2.832s4.815 1.133 6.515 2.832l14.162 14.163c1.7 1.7 2.833 4.249 2.833 6.515z"></path></svg></span></span>
+                    </a>
+                    <ul class="sub-menu">
+                        {{ range .Children }}
+                            {{ if .Children }}
+                            <li class="sub-menu menu-item menu-item-has-children">
+                                <a class="children" href="{{ .URL | absURL }}">
+                                    {{.Name}}
+                                    <span role="button" class="dropdown-menu-toggle" tabindex="0" aria-expanded="true" aria-label="Open Sub-Menu"><span class="gp-icon icon-arrow"><svg viewBox="0 0 330 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M305.913 197.085c0 2.266-1.133 4.815-2.833 6.514L171.087 335.593c-1.7 1.7-4.249 2.832-6.515 2.832s-4.815-1.133-6.515-2.832L26.064 203.599c-1.7-1.7-2.832-4.248-2.832-6.514s1.132-4.816 2.832-6.515l14.162-14.163c1.7-1.699 3.966-2.832 6.515-2.832 2.266 0 4.815 1.133 6.515 2.832l111.316 111.317 111.316-111.317c1.7-1.699 4.249-2.832 6.515-2.832s4.815 1.133 6.515 2.832l14.162 14.163c1.7 1.7 2.833 4.249 2.833 6.515z"></path></svg></span></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    {{ range .Children }}
+                                        <li class="menu-item"><a href="{{ .URL | absURL }}">{{.Name}}</a></li>
+                                    {{ end }}
+                                </ul>
+                            </li>
+                            {{ else }}
+                            <li class="menu-item"><a href="{{ .URL }}">{{.Name}}</a></li>
+                            {{ end }}
+                        {{ end }}
+                    </ul>
+                </li>
+                {{ else }}
+                <li class="menu-item"><a href="{{ .URL }}">{{.Name}}</a></li>
+                {{ end }}
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</nav>

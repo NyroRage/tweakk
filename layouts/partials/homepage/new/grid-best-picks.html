@@ -1,0 +1,108 @@
+<style>
+    .ez-section-info *{
+        display: block;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    .ez-featured-details-inner .post-categories a, .ez-standard-post .post-categories a{
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 1px 15px 1px 10px;
+        background-color: #fff;
+        color: black;
+        margin-bottom: 10px;
+        min-height: 30px;
+        border-radius: 30px;
+        font-size: 13px;
+        border: 1px solid grey;
+    }
+    .ez-featured-details-inner .cat-dot, .ez-standard-post .cat-dot{
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        position: relative;
+        border-radius: 100%;
+        margin-right: 10px;
+        background-color: var(--brand-color-2);
+        flex-shrink: 0;
+    }
+    .ez-post-title{
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    .ez-latest-posts-articles{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .ez-article-item, .ez-post-image-wrapper{
+        position: relative;
+        border-radius: 8px;
+    }
+    .ez-article-item .post-categories {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    .ez-post-details{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #f1f1f1;
+        padding-block: 20px;
+        padding-inline: 30px;
+    }
+    .ez-post-details .metas{
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .ez-latest-posts .ez-post-image-wrapper img {
+        height: 233px;
+        object-fit: cover;
+        width: 100%;
+        display: block
+    }
+    @media only screen and (max-width:768px){
+        .ez-latest-posts-articles{
+            grid-template-columns: none;
+        }
+    }
+</style>
+<section class="ez-latest-posts ez-section">
+    <div class="ez-section-info">
+        <h2>PC Buying Guides</h2>
+        <span style="font-size: 14px; color: #9F9F9F;">Our expertise lies in PC component buying guides to help users with their builds.</span>
+    </div>
+    <hr>
+<div class="ez-latest-posts-articles">
+{{ $range := where .Site.RegularPages.ByDate.Reverse "Section" "eq" "posts" }}
+{{ range first 9 $range}}
+
+    <div class="ez-article-item">
+        <div class="ez-standard-post latest">
+            <div class="ez-post-image-wrapper">
+                    <img src="{{.Params.featured_Image}}"  alt="{{.Title}}">
+                {{ with .Params.categories }}
+                <div class="post-categories">
+                    <a href="{{ index . 0 | urlize | absURL }}/">
+                        <span class="cat-dot"></span><span class="cat-title">{{ index . 0 }}</span>
+                    </a>
+                  </div>              
+                {{ end }}
+            </div>
+            <div class="ez-post-details">
+                <h3 class="ez-post-title latest">
+                    <a href="{{.Permalink}}">{{.Title | truncate "30"}}</a>
+                </h3>
+                <div class="metas">
+                    <span>{{.Params.author}}</span> – <span>{{dateFormat "January 2, 2006" .Date}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{ end }}
+</div>
+</section>

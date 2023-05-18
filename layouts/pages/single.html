@@ -1,0 +1,15 @@
+{{ define "main" }}
+
+<article id="{{.Title | urlize }}" class="page type-page status-publish infinite-scroll-item mv-content-wrapper"
+  itemtype="https://schema.org/CreativeWork" itemscope="">
+  <div class="inside-article">
+    <header class="entry-header" aria-label="Content">
+      <h1 class="entry-title" itemprop="headline">{{.Title}}</h1>
+    </header>
+    <div class="entry-content" itemprop="text">
+      {{ .Content | markdownify | htmlUnescape | safeHTML }}
+    </div>
+  </div>
+</article>
+
+{{ end }}

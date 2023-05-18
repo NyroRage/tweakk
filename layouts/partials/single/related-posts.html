@@ -1,0 +1,13 @@
+{{ $related := .Site.RegularPages.RelatedIndices . "categories" }}
+<div class="rp4wp-related-posts rp4wp-related-post">
+    <h3 class="ignore-toc">You Might Like These Too</h3>
+    <ul class="rp4wp-posts-list">
+        {{ range first 3 (shuffle $related) }}
+        <li class="rp4wp-col">
+            <div class="rp4wp_component rp4wp_component_image rp4wp_component_2"><a
+                    href="{{.Permalink}}" ><img loading="lazy" width="600" height="338" src="{{.Params.featured_Image}}" class="attachment-rp4wp-thumbnail-post size-rp4wp-thumbnail-post wp-post-image" alt="{{.Title}}"></a></div>
+            <div class="rp4wp_component rp4wp_component_title rp4wp_component_3"><a
+                    href="{{.Permalink}}" >{{.Title}}</a></div>
+        </li>
+        {{ end }}
+</div>

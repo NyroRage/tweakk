@@ -1,0 +1,51 @@
+{{ if .Params.categories }}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{.Site.BaseURL}}"
+    },
+    {{ with .Params.categories }}
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ index . 0 }}",
+      "item": "{{ index . 0 | urlize | absURL }}/"
+    },
+    {{ end }}
+    {{ with .Title }}
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{.}}"
+    }
+    {{ end }}
+    ]
+  }
+</script>
+{{ else }}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{.Site.BaseURL}}"
+    },
+    {{ with .Title }}
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{.}}"
+    }
+    {{ end }}
+    ]
+  }
+</script>
+{{ end }}

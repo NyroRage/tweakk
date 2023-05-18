@@ -1,0 +1,71 @@
+<!-- HomePage Title Tags -->
+{{- if .IsHome -}}
+<title>{{.Title}} | {{ .Site.Params.tagline }}</title>
+<meta property="og:title" content="{{.Title}} | {{ .Site.Params.tagline }}" />
+<meta property="twitter:title" content="{{.Title}} | {{ .Site.Params.tagline }}" />
+{{- end -}}
+
+<!-- Page with SEO_TITLE -->
+{{- if .IsPage -}}
+{{- if and (.Params.seo_title) (ne .Section "posts") -}}
+<title>{{- .Params.seo_title }}</title>
+<meta property="og:title" content="{{- .Params.seo_title }} - {{ $.Site.Title }}" />
+<meta property="twitter:title" content="{{- .Params.seo_title }} - {{ $.Site.Title }}" />
+{{- end -}}
+{{- end -}}
+
+<!-- Posts with Product Count and Title -->
+{{- if eq .Section "posts" -}}
+{{ with .Params.the_products }}
+<title>Top {{ len . }} {{ $.Title }} ({{ now.Format "Apr. 2006" }})</title>
+
+<meta property="og:title" content="Top {{ len . }} {{ $.Title }} in {{ now.Format "2006" }}" />
+<meta property="twitter:title" content="Top {{ len . }} {{ $.Title }} in {{ now.Format "2006" }}" />
+{{ end }}
+{{- end -}}
+
+{{- if .Site.Data.categories -}}
+<!-- Category With SEO_TITLE -->
+{{- $category := index .Site.Data.categories (.Title | anchorize) -}}
+{{- if $category.seo_title -}}
+{{- with $category.seo_title -}}
+<title>{{- . }}</title>
+<meta property="og:title" content="{{- . }} - {{ $.Site.Title }}" />
+<meta property="twitter:title" content="{{- . }} - {{ $.Site.Title }}" />
+{{- end -}}
+{{- else -}}
+{{- with $category.name -}}
+<title>{{- . }} - {{ $.Site.Title }} | {{- $.Site.Title -}}</title>
+<meta property="og:title" content="{{- . }} - {{ $.Site.Title }}" />
+<meta property="twitter:title" content="{{- . }} - {{ $.Site.Title }}" />
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{- if .Site.Data.tags -}}
+<!-- Tag With SEO_TITLE -->
+{{- $tag := index .Site.Data.tags (.Title | anchorize) -}}
+{{- if $tag.seo_title -}}
+{{- with $tag.seo_title -}}
+<title>{{- . }} - {{ $.Site.Title }}</title>
+<meta property="og:title" content="{{- . }} - {{ $.Site.Title }}" />
+<meta property="twitter:title" content="{{- . }} - {{ $.Site.Title }}" />
+{{- end -}}
+{{- else -}}
+{{- with $tag.name -}}
+<title>{{- . }} - {{ $.Site.Title }} | {{- $.Site.Title -}}</title>
+<meta property="og:title" content="{{- . }} - {{ $.Site.Title }}" />
+<meta property="twitter:title" content="{{- . }} - {{ $.Site.Title }}" />
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{- if .Site.Data.authors -}}
+<!-- Author Title -->
+{{- $author := index .Site.Data.authors (.Title | anchorize) -}}
+{{- with $author.name -}}
+<title>Author: {{ . }} - {{ $.Site.Title }}</title>
+<meta property="og:title" content="{{ . }}" />
+<meta property="twitter:title" content="{{ . }}" />
+{{- end -}}
+{{- end -}}

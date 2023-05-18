@@ -1,0 +1,49 @@
+<style>
+    .ez-latest-post{
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        gap: 30px;
+    }
+    .ez-latest-title, .ez-sidebar-widget-title{
+        border-bottom: 2px solid black;
+        margin-bottom: 20px;
+        line-height: 1.2em;
+        font-weight: 700;
+    }
+    .ez-summary p{
+        margin-bottom: 0;
+    }
+    @media only screen and (max-width:768px){
+        .ez-latest-post{
+            grid-template-columns: none;
+        }
+    }
+</style>
+<section class="ez-section ez-latest-post">
+    <div class="ez-latest-posts-list">
+        <h2 class="ez-latest-title">Latest Stories</h2>
+        <div class="ez-latest-list">
+            {{ range first 6 ( where .Site.RegularPages "Section" "ne" "pages" ) }}
+                <div class="ez-cat-list-item">
+                    <div class="info">
+                        {{ with .Params.categories }}<div class="ez-cat-post-info"><a class="category" href="{{ index . 0 | urlize | absURL }}/" title="{{ index . 0 }}">{{ index . 0 }}</a></div>{{ end }}
+                        <h3 class="ez-post-title ez-latest-post-title"><a href="{{.Permalink}}" title="{{.Title}}">{{.Title}}</a></h3>
+                        <div class="ez-cat-post-info">
+                        {{- if .Site.Data.authors -}}{{ $author := index .Site.Data.authors (.Params.author | anchorize) }}<span class="author">{{ $author.name }}</span>{{ end }}
+                        <time class="date" datetime="{{.Params.updateDate}}">{{dateFormat "January 2, 2006" .Params.updateDate}}</time>
+                        </div>
+                        {{ with .Params.meta_Description }}
+                        <div class="ez-summary">
+                            <p>{{.}}</p>
+                        </div>
+                        {{ end }}
+                    </div>
+                    <a href="{{.Permalink}}" title="{{.Title}}"><img class="ez-right-image" loading="lazy" src="{{ .Params.featured_Image | absURL }}" alt="{{.Title}}" width="600" height="338"></a>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+    <div class="ez-sidebar">
+        <div class="ez-sidebar-widget-title">Advertisement</div>
+    </div>
+</section>

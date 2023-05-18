@@ -1,0 +1,15 @@
+[markup]
+[markup.goldmark.renderer]
+unsafe = true
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON', 'NEWS']
+
+[outputFormats]
+
+  [outputFormats.NEWS]
+    MediaType = "application/xml"
+    BaseName = "google-news-sitemap"
+    IsHTML = false
+    IsPlainText = true
+    rel = "sitemap"

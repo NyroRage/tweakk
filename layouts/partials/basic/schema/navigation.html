@@ -1,0 +1,29 @@
+{{- $comma := false -}}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "SiteNavigationElement",
+        "name": [
+            {{- range .Site.Menus.main -}}
+                {{ if $comma -}},{{- end }}"{{ .Name }}"
+                {{- $comma = true }}
+            {{- if .Children }}
+                {{- range .Children }}
+                    {{- if $comma -}},{{- end -}}"{{ .Name }}"
+                    {{- $comma = true -}}
+                {{- end }}
+            {{- end }}
+            {{- end -}}],
+        "url": [ {{- $comma := false -}}
+                {{- range .Site.Menus.main -}}
+                    {{ if $comma -}},{{- end }}"{{ .URL | absURL }}"
+                    {{- $comma = true }}
+                {{- if .Children }}
+                    {{- range .Children }}
+                    {{- if $comma -}},{{- end -}}"{{ .URL | absURL }}"
+                    {{- $comma = true -}}
+                    {{ end }}
+                {{- end }}
+                {{- end -}} ]
+    }
+</script>

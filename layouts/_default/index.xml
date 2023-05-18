@@ -1,0 +1,49 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML}} 
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:media="http://search.yahoo.com/mrss/">
+
+<channel>
+
+<!-- Website Details -->
+
+    <title>{{.Site.Title}}</title>
+    {{ with .OutputFormats.Get "rss" -}}
+        <atom:link href="{{.Permalink}}" rel="self" type="application/rss+xml" />
+    {{ end -}}
+	<link>{{.Site.BaseURL}}</link>
+	<description>{{.Site.Params.tagline}}</description>
+	<lastBuildDate>{{.Date.Format "Mon, 02 Jan 2006 15:04:05 -0700"}}</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	{{ $logo := resources.Get .Site.Params.icon }}
+    <image>
+        <url>{{ $logo.Permalink | replaceRE "https://" "http://" }}</url>
+        <title>{{.Site.Title}}</title>
+        <link>{{.Site.BaseURL}}</link>
+        <width>50</width>
+        <height>50</height>
+    </image> 
+    {{- range where .Site.RegularPages "Section" "eq" "google-news" }}
+    {{ if lt (div (sub now.Unix .Lastmod.Unix) 3600) 100 }}
+    <item>
+            <title>{{.Params.seo_title}}</title>
+            {{ with .Permalink }}
+            <link>{{.}}</link>
+            <guid isPermaLink="false">{{.}}</guid>
+            {{ end }}
+            {{ with .Params.author }}
+            <dc:creator>{{ . }}</dc:creator>
+            {{ end }}
+            <pubDate>{{.Params.Date.Format "Mon, 02 Jan 2006 15:04:05 -0700"}}</pubDate>
+            {{ with .Params.categories }}
+            <category>{{ index . 0 }}</category>
+            {{ end }}
+            {{ with .Summary}}
+            <description>&lt;![CDATA[{{ . | htmlUnescape }}]]&gt;</description>
+            {{ end }}
+            <enclosure url="{{ .Params.featured_Image | absURL | replaceRE "https://" "http://" }}" type="image/webp" length="0"/>
+    </item>
+    {{ end }}
+    {{ end }}
+</channel>
+</rss>

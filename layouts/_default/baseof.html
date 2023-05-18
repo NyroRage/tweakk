@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{- partial "basic/head" . -}}
+    {{- partial "basic/analytics" . -}}
+    {{- partial "basic/schema" . -}}
+</head>
+
+<body class="dropdown-hover {{ if .IsHome }}home no-sidebar{{ else if .IsPage }}page right-sidebar{{else if or (.Data.Term) (.Section)}}archive{{end}} {{ if eq .Type "author"}}author{{end}} separate-containers">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M99KDPW"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    {{ partial "header/index.html" . }}
+    {{ if and (.IsPage) (ne .Section "pages") }}
+    {{ partial "single/post-header.html" . }}
+    {{ end }}
+    
+    <div class="site {{if ne .Kind "home"}} grid-container {{end}} container hfeed" id="{{.Kind}}">
+        <div class="site-content" id="content">
+            {{ if and (.IsPage) (ne .Section "pages")}}
+            {{ partial "sidebar/index.html" . }}
+            {{ end }}
+            <div class="content-area" id="primary">
+                <main class="site-main" id="main">
+                    {{ if and (ne .Kind "home") (ne .Section "pages") }}
+                        
+                    {{ end }}
+                    {{ block "main" . }}{{ end }}
+                </main>
+            </div>
+        </div>
+    </div>
+
+    {{ partial "footer/index.html" . }}
+</body>
+<script src="{{ "/js/jquery.min.js" | absURL }}" defer></script>
+<script id='generate-menu-js-extra'>
+    var generatepressMenu = {"toggleOpenedSubMenus":"1","openSubMenuLabel":"Open Sub-Menu","closeSubMenuLabel":"Close Sub-Menu"};
+</script>
+<script src="{{ "/js/menu.min.js" | absURL }}" defer></script>
+{{ if eq .Section "posts" }}
+    <script src="{{ "/js/post-footer.js" | absURL }}" defer></script>
+{{ end }}
+{{ if .IsHome }}
+<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+{{ end }}
+</html>

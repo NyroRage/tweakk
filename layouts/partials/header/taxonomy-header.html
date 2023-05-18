@@ -1,0 +1,26 @@
+{{- if .Site.Data.categories -}}
+{{ $category := index .Site.Data.categories (.Title | anchorize) }}
+{{ if $category.name }}
+<header class="page-header" aria-label="Page">
+  {{ with $category.name }}
+    <h1 class="page-title">{{.}}</h1>
+  {{ end }}
+  <div class="taxonomy-description">
+    <p>{{ $category.meta_Description }}</p>
+  </div>
+</header>
+{{ end }}
+{{ end }}
+{{ if .Site.Data.tags }}
+{{ $tags := index .Site.Data.tags (.Title | anchorize) }}
+{{ if $tags.name }}
+<header class="page-header" aria-label="Page">
+    {{ with $tags.name }}
+      <h1 class="page-title">{{.}}</h1>
+    {{ end }}
+    <div class="taxonomy-description">
+      <p>{{ $tags.meta_Description }}</p>
+    </div>
+</header>
+{{ end }}
+{{ end }}

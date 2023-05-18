@@ -1,0 +1,36 @@
+<section class="ez-latest-posts ez-section">
+    <div class="ez-section-info">
+        <h2>Latest News</h2>
+        <span style="font-size: 14px; color: #9F9F9F;">Keep Yourself Upto Date with Latest News</span>
+    </div>
+    <hr>
+<div class="ez-latest-posts-articles">
+{{ $range := where .Site.RegularPages.ByDate.Reverse "Section" "eq" "google-news" }}
+{{ range first 9 $range}}
+
+<div class="ez-article-item">
+    <div class="ez-standard-post latest">
+        <div class="ez-post-image-wrapper">
+                <img src="{{.Params.featured_Image}}"  alt="{{.Title}}">
+            {{ with .Params.categories }}
+            <div class="post-categories">
+                <a href="{{ index . 0 | urlize | absURL }}/">
+                    <span class="cat-dot"></span><span class="cat-title">{{ index . 0 }}</span>
+                </a>
+              </div>              
+            {{ end }}
+        </div>
+        <div class="ez-post-details">
+            <h3 class="ez-post-title latest">
+                <a href="{{.Permalink}}">{{.Title}}</a>
+            </h3>
+            <div class="metas">
+                <span>{{.Params.author}}</span> – <span>{{dateFormat "January 2, 2006" .Date}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ end }}
+</div>
+</section>

@@ -1,0 +1,77 @@
+{{ if .Params.the_products }}
+{{ if .Params.product_Mheading }}
+<h2>{{.Params.product_Mheading}}</h2>
+{{else}}
+<h2 id="{{ .Title | replaceRE " " "_" | lower }}" style="font-size:28px;">The {{ len .Params.the_products }} {{.Title}} Reviews</h2>
+{{end}}
+
+<!-- Product Previews -->
+{{ range .Params.the_products }}
+<div class="fs-featured-box image">
+    <div class="info">
+        <h3 class="title" id="{{.name | replaceRE " " "_" | lower }}">{{.name}}</h3>
+        <div class="featured-box-button-container">
+            <!--
+            {{ if .amzlink }}
+            <button title="{{.name}}" class="product-table-cta" onclick="window.open('https://techiesmag.com/go?prod_id={{.amzlink}}&ref={{$.Title | urlize}}&from=contents');" target="_blank" rel="sponsored noopener noreferrer">See On Amazon</button>
+            {{ else }}
+            <button title="{{.name}}" class="product-table-cta" onclick="window.open('https://www.amazon.com/s?k={{.name}}&tag=techiesmag10-20');" target="_blank" rel="sponsored noopener noreferrer">See On Amazon</button>
+            {{ end }}
+            -->
+            {{ if .amzlink }}
+            <a title="{{.name}}" class="product-table-cta" href="https://www.amazon.com/dp/{{.amzlink}}?linkCode=assoc-rails-rate-card-link-code-tw3&tag=can-techiesmag-12-20" target="_blank" rel="sponsored noopener noreferrer">See on Amazon</a>
+            {{ else }}
+            <a title="{{.name}}" class="product-table-cta" href="https://www.amazon.com/s?k={{.name}}&tag=can-techiesmag-12-20" target="_blank" rel="sponsored noopener noreferrer">See on Amazon</a>
+            {{ end }}
+        </div>
+        {{ range .morebtns }}
+        <div class="featured-box-button-container">
+            <a class="product-table-cta" href="{{.btnLink}}"
+                rel="noopener sponsored noreferrer" target="_blank">{{.btnName | title}}</a>
+        </div>
+        {{ end }}
+    </div>
+    <div class="media">
+        <div class="image-container"><img loading="lazy" width="446" height="430"
+                style="min-height:300px;object-fit:contain;" src="{{.image}}" class="attachment-medium size-medium"
+                alt="{{.name}}"></div>
+    </div>
+</div>
+{{ if or (.pros) (.cons) }}
+<div class="fs-pros-cons">
+    {{ if .pros }}
+    <div class="fs-pros">
+        <div class="fs-pros-cons-wrap">
+            <div>
+                <h4 style="font-size:18px;" class="ignore-toc">Reasons to Buy</h4>
+                <ul>
+                    {{range .pros}}
+                    <li>{{.pro}}</li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+    {{ if .cons }}
+    <div class="fs-cons">
+        <div class="fs-pros-cons-wrap">
+            <div>
+                <h4 class="ignore-toc">Reasons Not to Buy</h4>
+                <ul>
+                    {{range .cons}}
+                    <li>{{.con}}</li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
+    {{ range .paragraphs }}
+    <p>{{ .paragraph | markdownify }}</p>
+    {{ end }}
+    <hr>
+{{ end }}
+{{ end }}

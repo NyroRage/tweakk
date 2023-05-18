@@ -1,0 +1,9 @@
+<a href="{{ .Destination | safeURL }}" 
+{{- if or (strings.HasPrefix .Destination "https://amazon") (strings.HasPrefix .Destination "https://amzn") (strings.HasPrefix .Destination "http://amazon") (strings.HasPrefix .Destination "http://amzn") }}
+    rel="nofollow sponsored noopener noreferrer" target="_blank"
+{{- else if .Title }}
+    rel="{{.Title}} noopener" target="_blank"
+{{- else if strings.HasPrefix .Destination "http" }}
+    rel="noopener" target="_blank"
+{{- end }}
+>{{ .Text | safeHTML }}</a>

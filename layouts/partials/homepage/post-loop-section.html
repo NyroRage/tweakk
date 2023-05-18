@@ -1,0 +1,67 @@
+<style>
+    .ez-category-section {
+        margin-block: 2em;
+        border-bottom: 1px solid #dedede;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1em;
+      padding-bottom: 2em;
+    }
+    /*  .ez-category-section .thumbnail{
+        position: relative;
+    }
+    .ez-category-section .thumbnail::before{
+        content: "Trending";
+        text-transform: uppercase;
+        display: inline-block;
+        background-color: #82EE4C;
+        font-size: 13px;
+        position: absolute;
+        bottom: 10px;
+    }  */
+    .home-meta-info{
+        color: #666;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1.13px;
+    }
+    @media screen and (max-width: 600px) {
+        .cat-grid {
+            grid-template-columns: none;
+          }
+    }
+    .home-post-title{
+        font-size: 16px;
+        text-align: center; 
+        margin: 0px;
+    }
+    </style>
+
+    <section class="ez-category-section">
+        <h2 class="section-title">Knowledge Base</h2>
+        <div class="cat-grid">
+            {{ range first 6 (where .Site.RegularPages.ByDate.Reverse "Section" "ne" "pages") }}
+            <div class="knowledge-base-col">
+                <div class="thumbnail">
+                <img loading="lazy" width="370" height="210" src="{{ .Params.featured_Image | absURL }}" alt="{{.Title}}">
+                </div>
+                {{ with .Params.categories }}
+                    <div style="text-align: center;">
+                        <a href="{{ index . 0 | urlize | absURL }}/" class="home-meta-info" title="{{ index . 0 }}">{{ index . 0 }}</a>
+                    </div>
+                    {{ end }}
+                <h3 class="home-post-title">
+                    <a href="{{.Permalink}}">{{.Title}}</a>
+                </h3>
+                {{- if .Site.Data.authors -}}
+                {{ $author := index .Site.Data.authors (.Params.author | anchorize) }}
+                <div style="text-align: center;">
+                    <span class="home-meta-info">{{ $author.name }}</span>
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </section>

@@ -1,0 +1,11 @@
+{{- if .Site.Data.authors -}}
+{{- $author := index .Site.Data.authors (.Title | anchorize) }}
+<header class="page-header" aria-label="Page">
+    <h1 class="page-title">
+        {{ with $author.avatar }}
+        <img alt="{{$author.name}}" loading="lazy" src="{{.}}" class="avatar avatar-100 photo lazyloaded" height="100" width="100">{{ end }}
+           {{ with $author.name }}<span class="vcard">{{.}}</span>{{ end }}
+    </h1>
+    {{ with $author.bio }}<div class="author-info">{{.}}</div>{{ end }}
+</header>
+{{ end }}

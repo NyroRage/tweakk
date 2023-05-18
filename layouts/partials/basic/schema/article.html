@@ -1,0 +1,47 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{.Site.BaseURL}}"
+      },
+      "headline": "{{.Params.seo_title | default .Title}}",
+      "description": "{{.Params.meta_Description}}",
+      "copyrightYear": "{{now.Format "2006"}}",
+      {{ with .Params.Cateogies }}
+      "articleSection": "{{index 0 .}}",
+      {{ end }}
+      {{ with .Content }}
+      "articleBody": "{{.}}",
+      {{ end }}
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{.Params.featured_Image}}",
+        "width": "{{ site.Params.open_graph.imageW | default "1200" }}",
+        "height": "{{ site.Params.open_graph.imageH | default "680" }}"
+      },
+      {{ if .Site.Data.authors }}
+      {{ $author := index .Site.Data.authors (.Params.author | anchorize) }}
+      {{- if $author.name -}}
+        "author": {
+          "@type": "Person",
+          "url": "/author/{{.Params.author | anchorize}}/",
+          "name": "{{ $author.name }}"
+        },
+      {{- end -}}
+      {{- end -}}
+      "publisher": {
+        "@type": "Organization",
+        "name": "Example",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{.Site.Params.logo}}",
+          "width": "400",
+          "height": "400"
+        }
+      },
+      "datePublished": "{{.Date.Format "2006-01-02" }}",
+      "dateModified": "{{.Lastmod.Format "2006-01-02" }}"
+    }
+</script>

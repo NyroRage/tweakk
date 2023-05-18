@@ -1,0 +1,15 @@
+{{- if .IsHome }}
+    {{- partial "basic/schema/organization.html" . }}
+    {{- partial "basic/schema/blog-schema.html" . }}
+{{- end }}
+
+{{- if or (eq .Page.Type "posts") (eq .Page.Type "knowledge-base") }}
+    {{- partial "basic/schema/article.html" . }}
+    {{- partial "basic/schema/blogpost.html" . }}
+{{- end }}
+
+<!-- Other Schemas -->
+{{- partial "basic/schema/navigation.html" . }}
+{{- partial "basic/schema/breadcrumbs.html" . }}
+{{- partial "basic/schema/faq.html" . }}
+{{- partial "basic/schema/list-schema.html" . }}

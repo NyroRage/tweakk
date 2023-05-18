@@ -1,0 +1,24 @@
+{{- if .Params.the_products -}}
+{{- $comma := false -}}
+{{- $.Scratch.Set "position" 1 -}} 
+<script type="application/ld+json"> {
+    "@context": "http://schema.org",
+    "@type": "ItemList",
+    "url": "{{.Permalink | absURL }}",
+    "name": "{{.Title}}",
+    "numberOfItems":{{len .Params.the_products}},
+    "itemListElement": [
+    {{- range .Params.the_products }}
+    {{- if $comma }},{{- end }}
+        {   
+            "@type": "ListItem", 
+            "position":"{{$.Scratch.Get "position"}}{{$.Scratch.Add "position" 1}}", 
+            "url": "{{ $.Permalink | absURL }}#{{.name | replaceRE " " "_" | lower }}", 
+            "@id": "{{.name | replaceRE " " "_" | lower }} ", 
+            "name": "{{.name}}" 
+        }
+    {{- $comma = true }}
+    {{- end }}
+    ]}
+</script>
+{{- end }}

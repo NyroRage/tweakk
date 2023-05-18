@@ -1,0 +1,111 @@
+<style>
+    .ez-single-featured{
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+    .ez-single-meta {
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+    
+    .ez-single-img{
+        width: 100%; 
+        display: block;
+        min-height: 450px; 
+        height: 450px;
+        object-fit: cover;
+    }
+    .ez-single-title{
+        font-size: 43px;
+        margin: 10px 0px;
+    }
+    
+    .ez-single-cat{
+        color: #ffffff;
+        font-size: 12px;
+        margin: 10px 0px;
+        text-transform: uppercase;
+    }
+    .ez-single-cat:hover{
+        color: #dddddd;
+    }
+    .ez-single-date{
+        font-size: 12px;
+        margin: 10px 0px;
+        text-transform: uppercase;
+    }
+    .mask-overlay:before {
+        width: 100%;
+        height: 100%;
+        background: rgb(0 0 0 / 50%);
+        content: " ";
+        display: block;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        position: absolute;
+    }
+    .post-categories a{
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 1px 15px 1px 10px;
+        background-color: #fff;
+        color: black;
+        margin-bottom: 10px;
+        min-height: 30px;
+        border-radius: 30px;
+        font-size: 13px;
+        border: 1px solid grey;
+    }
+    .cat-dot{
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        position: relative;
+        border-radius: 100%;
+        margin-right: 10px;
+        background-color: var(--brand-color-2);
+        flex-shrink: 0;
+    }
+    @media(max-width:768px) {
+        .ez-single-title{
+            font-size: 24px;
+        }
+        .ez-single-img{
+            height: 300px;
+            min-height: 300px;
+        }
+    }
+    </style>
+  
+            <div class="ez-single-featured">
+                {{ with .Params.featured_Image }}
+                    <img src="{{. | absURL}}" class="ez-single-img" alt="{{$.Title}}" width="1200" height="450">
+                {{ end }}
+                <span class="mask-overlay"></span>
+                <div class="ez-single-meta">
+                    {{ with .Params.categories }}
+                    <div class="post-categories">
+                        <a href="{{ index . 0 | urlize | absURL }}/">
+                            <span class="cat-dot"></span><span class="cat-title">{{ index . 0 }}</span>
+                        </a>
+                      </div>              
+                    {{ end }}
+                    <h1 class="ez-single-title">{{ .Title }}</h1>
+                        {{if (.Params.the_excerpt)}}
+                            <p>{{.Params.the_excerpt}}</p>
+                        {{end}}
+                    {{- if .Site.Data.authors -}}
+                    {{ $author := index .Site.Data.authors (.Params.author | anchorize) }}
+                        <a href="/author/{{.Params.author | anchorize}}/" class="ez-single-cat">{{ $author.name }}</a>
+                    {{ end }}
+                    {{ with .Date }}
+                        – <time class="ez-single-cat">{{ .Format "2 January, 2006"  }}</time>
+                    {{ end }}
+                </div>
+            </div>

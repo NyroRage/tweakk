@@ -1,0 +1,124 @@
+[[topics]]
+weight = 1
+name = "Motherboards"
+url = "https://www.techiesmag.com/motherboards/"
+
+[[topics]]
+weight = 2
+name = "Graphics Cards"
+url = "https://www.techiesmag.com/graphics-cards/"
+
+[[topics]]
+weight = 3
+name = "CPU Coolers"
+url = "https://www.techiesmag.com/cpu-coolers/"
+
+[[topics]]
+weight = 4
+name = "PC Casings"
+url = "https://www.techiesmag.com/cases/"
+
+[[contact]]
+weight = 1
+name = "Contact Us"
+url = "https://www.techiesmag.com/contact-us/"
+
+[[contact]]
+weight = 3
+name = "Terms"
+url = "https://www.techiesmag.com/terms-and-conditions/"
+
+[[contact]]
+weight = 2
+name = "Privacy"
+url = "https://www.techiesmag.com/privacy-policy/"
+
+[[contact]]
+weight = 4
+name = "Sitemap"
+url = "https://www.techiesmag.com/sitemap.xml/"
+
+[[main]]
+weight = 1
+name = "Motherboards"
+url = "https://www.techiesmag.com/motherboards/"
+
+[[main]]
+weight = 2
+name = "Graphics Cards"
+url = "https://www.techiesmag.com/graphics-cards/"
+
+[[main]]
+weight = 3
+name = "CPU Coolers"
+url = "https://www.techiesmag.com/cpu-coolers/"
+
+[[main]]
+weight = 4
+name = "CPUs"
+url = "https://www.techiesmag.com/cpus/"
+
+[[main]]
+weight = 5
+url = "https://www.techiesmag.com/rams/"
+name = "RAMs"
+
+[[main]]
+weight = 6
+name = "Cases"
+url = "https://www.techiesmag.com/cases/"
+
+[[main]]
+weight = 7
+name = "PSUs"
+url = "https://www.techiesmag.com/psus/"
+
+[[main]]
+weight = 8
+name = "Topics"
+url = "https://www.techiesmag.com/knowledge-base/"
+
+[[footer]]
+weight = 1
+name = "About Us"
+url = "https://www.techiesmag.com/about-us/"
+
+[[footer]]
+weight = 2
+name = " Contact Us"
+url = "https://www.techiesmag.com/contact-us/"
+
+[[footer]]
+weight = 3
+name = " Privacy Policy"
+url = "https://www.techiesmag.com/privacy-policy/"
+
+[[footer]]
+weight = 4
+url = "https://www.techiesmag.com/terms-and-conditions/"
+name = " Terms and Conditions"
+
+[[footer]]
+weight = 5
+url = "https://www.techiesmag.com/affiliate-disclosure/"
+name = "Affiliate Disclosure"
+
+[[footer]]
+weight = 6
+name = "Sitemap"
+url = "https://www.techiesmag.com/sitemap.xml"
+
+[[footer_nav]]
+weight = 1
+name = "Home"
+url = "https://www.techiesmag.com/"
+
+[[footer_nav]]
+weight = 2
+name = "About"
+url = "https://www.techiesmag.com/about-us/"
+
+[[footer_nav]]
+weight = 3
+name = "Contact"
+url = "https://www.techiesmag.com/contact-us/"

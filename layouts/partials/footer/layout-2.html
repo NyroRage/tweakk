@@ -1,0 +1,161 @@
+{{ $logo := resources.Get .Site.Params.logo }}
+<style>
+    .site.footer-widgets{
+        background-color: #15191e;
+    }
+    .footer-widgets-area{
+        display: grid;
+        padding-block:4em;
+        grid-template-columns: 3fr 2fr 2fr 3fr;
+        gap: 30px;
+    }
+    .footer-widgets-area{
+        font-size: 15px;
+    }
+    .footer-widget-title{
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: none;
+        padding-bottom: 0;
+        text-align: left;
+        margin-bottom: 30px;
+    }
+    #menu-footer-nav{
+        list-style: none;
+        margin: 0;
+    }
+    #menu-footer-nav li{
+        padding-block: 10px;
+        font-weight: bold;
+    }
+    #menu-footer-nav li:first-child{
+        padding-top: 0px;
+    }
+    #menu-footer-nav li:last-child{
+        padding-bottom: 0px;
+    }
+    .footer-layout-2 .copyright-area{
+        display: flex;
+        justify-content: space-between;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        border-top: 1px solid rgba(255,255,255,.15);
+        color: #9f9f9f;
+    }
+    .footer-social-area{
+        display: flex;
+        gap: 10px;
+    }
+    .footer-social-area a img{
+        width: 4em;
+        height: 2em;
+        background-color: white;
+        padding: 5px;
+        object-fit: contain;
+        border-radius: 100px;
+    }
+    .copyright-nav #menu-footer-nav{
+        display: flex;
+        margin: 0 !important;
+        padding: 0;
+        gap: 20px;
+    }
+    .copyright-nav #menu-footer-nav li, .copyright-nav #menu-footer-nav li a{
+        padding: 0;
+        color: #9f9f9f;
+        font-size: 15px;
+    }
+    .copyright-nav #menu-footer-nav li a:hover{
+        color: white;
+    }
+    @media only screen and (max-width:768px){
+        .footer-widgets-area, .footer-layout-2 .copyright-area{
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 1em;
+        }
+        .copyright-nav #menu-footer-nav{
+            justify-content: center;
+            align-items: center;
+        }
+        .footer-widget-container{
+            padding-bottom: 2em;
+        }
+        .footer-widget-container:not(:last-child){
+            border-bottom: 1px solid white;
+        }
+        .copyright-text{
+            text-align: center;
+        }
+    }
+</style>
+<div class="footer-layout-2 site footer-widgets">
+    <div class="footer-widgets-area grid-container">
+        <div class="footer-widget-1 footer-widget-container"> 
+            <div class="footer-widget-area">
+                <img src="https://www.techiesmag.com/uploads/logo.webp" alt="{{.Site.Title}}" width="{{ $logo.Width }}" height="{{ $logo.Height }}">
+                <p>Build your dream setup by procuring expert-level guidelines, and select from a variety of options to build the rig and enhance your gaming experience.</p>
+                <div class="footer-social-area">
+                    {{ with site.Params.social_accounts.sitefbAccount }}
+                    <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="Facebook page" aria-label="Visit our Facebook page" class="fs-facebook" data-wpel-link="external">
+                        <img alt="Facebook"src="{{"/icons/facebook.svg" | absURL}}" loading="lazy"></a>
+                    {{ end}} {{ with site.Params.social_accounts.siteinstagramAccount }}
+                        <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="Instagram page" aria-label="Visit our Instagram page" class="fs-instagram" data-wpel-link="external">
+                        <img alt="Instagram" src="{{"/icons/instagram.svg" | absURL}}" loading="lazy"></a>
+                    {{ end}} {{ with site.Params.social_accounts.sitetwitterAccount }}
+                   <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="Twitter account" aria-label="Visit our Twitter account" class="fs-twitter" data-wpel-link="external">
+                        <img alt="Twitter" src="{{"/icons/twitter.svg" | absURL}}" loading="lazy"></a>
+                    {{ end}} {{ with site.Params.social_accounts.siteYouTubeAccount }}
+                    <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="YouTube channel" aria-label="Visit our YouTube channel" class="fs-youtube" data-wpel-link="external">
+                        <img alt="YouTube" src="{{"/icons/youtube.svg" | absURL}}" loading="lazy"></a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        <div class="footer-widget-2 footer-widget-container"> 
+            <h3 class="footer-widget-title">TOPICS</h3>
+            <div class="footer-menu-area">
+                <ul id="menu-footer-nav" class="menu">
+                    {{ range .Site.Menus.topics }}
+                    <li id="menu-item" class="menu-item">
+                        <a href="{{.URL}}" >{{.Name}}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+        <div class="footer-widget-3 footer-widget-container"> 
+            <h3 class="footer-widget-title">USEFUL LINK</h3>
+            <div class="footer-menu-area">
+                <ul id="menu-footer-nav" class="menu">
+                    {{ range .Site.Menus.contact }}
+                    <li id="menu-item" class="menu-item">
+                        <a href="{{.URL}}" >{{.Name}}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+        <div class="footer-widget-4 footer-widget-container"> 
+            <h3 class="footer-widget-title">DISCLOSURE</h3>
+            <div class="footer-widget-area">
+                <p>{{ "There may be some [affiliate links](https://www.techiesmag.com/affiliate-disclosure/) in articles that make us commission on every purchase by users without any additional cost." | markdownify }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area grid-container">
+        <div class="copyright-text">
+            {{.Site.Title}} © 2023. All rights reserved.
+        </div>
+        <div class="copyright-nav">
+            <ul id="menu-footer-nav" class="menu">
+                {{ range .Site.Menus.footer_nav }}
+                <li id="menu-item" class="menu-item">
+                    <a href="{{.URL}}" >{{.Name}}</a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- Stylesheets -->
+{{- $Fonts := resources.Get "/css/fonts.css" | minify -}}
+{{- $mainCSS := resources.Get "/css/main.css" | minify -}}
+{{- $base := resources.Get "/css/base.css" | minify -}}
+{{- $output := resources.Get "/css/output.css" | minify -}}
+{{- $custom := resources.Get "/css/custom.css" | minify -}}
+{{- $hpFP := resources.Get "/css/hp-featured-post.css" | minify -}}
+{{- $hpPP := resources.Get "/css/hp-popular-posts.css" | minify -}}
+{{- $hpRP := resources.Get "/css/hp-recent-posts.css" | minify -}}
+{{- $Legacy := resources.Get "/css/legacy.css" | minify -}}
+{{- $NV := resources.Get "/css/navigation.css" | minify -}}
+{{- $wpBlocks := resources.Get "/css/wp-block-library.css" | minify -}}
+{{- $gpBase := resources.Get "/css/generate-press-base.css" | minify -}}
+{{- $gpBlog := resources.Get "/css/generate-press-blog.css" | minify -}}
+{{- $widgetAreas := resources.Get "/css/widget-areas.min.css" | minify -}}
+{{- $allStyles := slice $Fonts $mainCSS $custom $output $hpFP $hpPP $hpRP $NV $gpBase $widgetAreas -}}
+{{- $mainStyle := $allStyles | resources.Concat "css/styles.css" -}}
+<style>
+:root{
+    --brand-color-1: #a71d16;
+    --brand-color-2: #86464C;
+    --overlay-brand-color-1: #ffffff;
+    --overlay-brand-color-2: #ffffff;
+    --table-header-color: #feb033;
+    --text-color: rgb(43,43,43);
+    --pros-color: #297dae;
+    --cons-color: #8b0f0f;
+}
+</style>
+{{ if ne hugo.Environment "development" }}
+<link rel="stylesheet" href="{{- $mainStyle.Permalink | safeCSS -}}">
+{{ else }}
+{{- range $allStyles }}
+    <link rel="stylesheet" href="{{- .Permalink | safeCSS -}}">
+{{- end -}}
+{{ end }}

@@ -1,0 +1,58 @@
+<style>
+    .home-header-cover{
+        position: relative;
+        height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        box-sizing: border-box;
+    }
+    .header-overlay, .header-cover-img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    .header-overlay{
+        background-color: #000;
+        z-index: 1;
+        opacity: .5;
+    }
+    .header-cover-img{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        object-fit: cover;
+        outline: none;
+        border: none;
+        box-shadow: none;
+    }
+    .header-cover-inner{
+        position: absolute;
+        text-align: center;
+        color: white;
+        z-index: 99;
+        background-color: #282f33b3;
+        padding: 2rem 3rem;
+        width: 50%;
+    }
+    @media only screen and (max-width:768px){
+        .header-cover-inner{
+            width: 100%;
+            padding: 3rem 1.5rem;
+        }
+    }
+</style>
+<div class="home-header-cover">
+    <div class="header-overlay"></div>
+    <img src="https://www.techiesmag.com/uploads/featured-image.webp" alt="Homepage Banner BG" class="header-cover-img">
+    <div class="header-cover-inner grid-container">
+        <h1 class="header-cover-heading">Level Up Your Gaming Experience</h1>
+        <p class="header-cover-p">Techies Mag strives to deliver knowledge about PC components, such as buying guides, so that you choose the right components for your next build.</p>
+    </div>
+</div>

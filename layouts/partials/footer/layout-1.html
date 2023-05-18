@@ -1,0 +1,42 @@
+<div id="footer-widgets" class="site footer-widgets">
+    <div class="footer-widgets-container">
+        <div class="inside-footer-widgets">
+            <div class="footer-widget-1">
+                <aside id="fs_social_profiles-2" class="widget inner-padding fs_social_profiles">
+                    <div class="fs-social-profiles">
+                        {{ with site.Params.social_accounts.sitefbAccount }}
+                        <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="Facebook page" aria-label="Visit our Facebook page" class="fs-facebook" data-wpel-link="external">
+                            <img width="320" height="512" alt="Facebook"src="{{"/icons/facebook.svg" | absURL}}" loading="lazy" data-ll-status="loaded" class="lazyloaded"></a>
+                        {{ end}} {{ with site.Params.social_accounts.siteinstagramAccount }}
+                            <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="Instagram page" aria-label="Visit our Instagram page" class="fs-instagram" data-wpel-link="external">
+                            <img width="448" height="512" alt="Instagram" src="{{"/icons/instagram.svg" | absURL}}" loading="lazy" data-ll-status="loaded" class="lazyloaded"></a>
+                        {{ end}} {{ with site.Params.social_accounts.sitetwitterAccount }}
+                       <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="Twitter account" aria-label="Visit our Twitter account" class="fs-twitter" data-wpel-link="external">
+                            <img width="512" height="512" alt="Twitter" src="{{"/icons/twitter.svg" | absURL}}" loading="lazy" data-ll-status="loaded" class="lazyloaded"></a>
+                        {{ end}} {{ with site.Params.social_accounts.siteYouTubeAccount }}
+                        <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="YouTube channel" aria-label="Visit our YouTube channel" class="fs-youtube" data-wpel-link="external">
+                            <img width="576" height="512" alt="YouTube" src="{{"/icons/youtube.svg" | absURL}}" loading="lazy" data-ll-status="loaded" class="lazyloaded"></a>
+                        {{ end }}
+                    </div>
+                </aside>
+                <aside id="nav_menu-2" class="widget inner-padding widget_nav_menu">
+                    <div class="menu-footer-nav-container">
+                        <ul id="menu-footer-nav" class="menu">
+                            {{ range .Site.Menus.footer }}
+                            <li id="menu-item" class="menu-item">
+                                <a href="{{.URL}}" >{{.Name}}</a>
+                            </li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="site-info" aria-label="Site">
+    <div class="inside-site-info">
+        <div class="copyright-bar">
+            {{.Site.Title}} © 2017-2023. All rights reserved. </div>
+    </div>
+</footer>

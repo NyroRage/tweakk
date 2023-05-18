@@ -1,0 +1,52 @@
+{{- $robots := `
+<meta name="robots" content="index,follow">
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+` -}}
+
+{{- if .IsHome -}}
+{{- if eq site.Params.siteRobots.homeIndex true -}}
+{{- $robots = `
+<meta name="robots" content="noindex, nofollow">` -}}
+{{- end -}}
+{{- end -}}
+
+{{- with .Data.Term -}}
+{{- if eq site.Params.siteRobots.catIndex true -}}
+{{- $robots = `
+<meta name="robots" content="noindex, follow">` -}}
+{{- end -}}
+{{- end -}}
+
+{{- if eq .Section "posts" -}}
+{{- if eq site.Params.siteRobots.postIndex true -}}
+{{- $robots = `
+<meta name="robots" content="noindex, nofollow">` -}}
+{{- end -}}
+{{- end -}}
+
+{{- if eq .Section "pages" -}}
+{{- if eq site.Params.siteRobots.pageIndex true -}}
+{{- $robots = `
+<meta name="robots" content="noindex, follow">` -}}
+{{- else if eq .Params.index false -}}
+{{- $robots = `
+<meta name="robots" content="noindex, follow">` -}}
+{{- end -}}
+{{- end -}}
+
+{{- if eq .Section "guides" -}}
+{{- if eq site.Params.siteRobots.blogIndex true -}}
+{{- $robots = `
+<meta name="robots" content="noindex, nofollow">` -}}
+{{- end -}}
+{{- end -}}
+
+{{- with .Paginator -}}
+{{- if ne .PageNumber 1 -}}
+{{- $robots = `
+<meta name="robots" content="noindex, follow">` -}}
+{{- end -}}
+{{- end -}}
+
+{{ $robots | safeHTML }}

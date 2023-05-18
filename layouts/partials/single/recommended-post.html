@@ -1,0 +1,6 @@
+{{ range first 1 ( where .Site.RegularPages "Section" "ne" "pages" | shuffle)  }}
+<a class="fs-recommended-post-bottom" href="{{.Permalink}}" aria-label="{{.Title}}"> 
+    <div class="thumbnail"><img loading="lazy" width="150" height="150" src="{{.Params.featured_Image}}" class="attachment-thumbnail size-thumbnail wp-post-image lazyloaded" alt="{{.Title}}"></div>
+    <div class="title">{{.Title}}</div>
+</a>
+{{ end }}

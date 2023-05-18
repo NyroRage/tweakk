@@ -1,0 +1,15 @@
+<aside id="fs_popular_posts_widget-4" class="widget inner-padding fs_popular_posts_widget">
+    <div class="fs-popular-posts type-popular">
+        <h3 class="widget-title">Most Recent</h3>
+        <ul class="list-unstyled">
+            {{ $related := .Site.RegularPages.RelatedIndices . }}
+            {{ range first 6 (shuffle $related) }}
+            <li><a href="{{.Permalink}}" >
+                    <div class="thumbnail"><img width="600" height="338" src="{{.Params.featured_Image}}" class="lazyloaded" alt="{{.Title}}" loading="lazy">
+                    </div>
+                    <div class="title">{{.Title}}</div>
+                </a></li>
+            {{ end }}
+        </ul>
+    </div>
+</aside>

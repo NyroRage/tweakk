@@ -1,0 +1,24 @@
+<style>
+    .ez-section{
+        padding-bottom: 1em;
+        margin-bottom: 3em;
+    }
+    .ez-section h1{
+        font-size: 30px !important;
+    }
+    .ez-section h2{
+        font-size: 40px !important;
+    }
+    .ez-section h3{
+        font-size: 22px !important;
+    }
+    .ez-section p{
+        font-size:16px !important;
+        margin-bottom: 0 !important;
+    }
+</style>
+    {{ partial "homepage/new/banner.html" . }}
+<div class="inside-article grid-container">
+    {{ partial "homepage/new/grid-best-picks.html" . }}
+    {{ partial "homepage/new/grid-knowledge-base.html" . }}
+</div>

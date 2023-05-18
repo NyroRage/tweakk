@@ -1,0 +1,44 @@
+languageCode = "en-us"
+DisqusShortname = "techiesmag-2.disqus.com"
+googleAnalytics = "UA-213465063-2"
+paginate = "15"
+disableKinds = ["section"]
+title = "Amazon"
+assetDir = "static"
+baseURL = "https://www.amazon.com/"
+
+[markup]
+
+[markup.tableOfContents]
+endLevel = 3
+ordered = true
+
+[permalinks]
+posts = "/:title/"
+pages = "/page/:title/"
+categories = "/:title/"
+tags = "/:title/"
+
+[related]
+includeNewer = true
+threshold = 80
+toLower = false
+
+[[related.indices]]
+name = "categories"
+weight = 100
+
+[[related.indices]]
+name = "tags"
+weight = 100
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+author = "author"
+
+[outputFormats]
+
+[outputFormats.RSS]
+mediatype = "application/rss"
+baseName = "index"

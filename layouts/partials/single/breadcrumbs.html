@@ -1,0 +1,15 @@
+{{ if .Params.categories }}
+<div class="fs-top-breadcrumbs">
+  <nav id="breadcrumbs">
+    <span>
+      <span>
+        <a href="{{.Site.BaseURL}}" >Home</a> »
+        <span>
+            {{ with .Params.categories }}<a href="{{ index . 0 | urlize | absURL }}/" >{{ index . 0 }}</a> »{{ end }}
+            {{ with .Title }}<a href="{{$.Permalink}}"><span class="breadcrumb_last" aria-current="page">{{.}}</span></a>{{ end }}
+        </span>
+    </span>
+</span>
+  </nav>
+</div>
+{{ end }}

@@ -1,0 +1,16 @@
+<aside class="trending-posts-container">
+    <aside id="fs_popular_posts_widget-3" class="widget inner-padding fs_popular_posts_widget">
+        <div class="fs-popular-posts type-trending">
+            <h3 class="widget-title">Trending Now</h3>
+            <ul class="list-unstyled">
+                {{ range first 10 (where .Site.RegularPages ".Params.trending" "eq" true) }}
+                <li><a href="{{.Permalink}}"
+                    >
+                    <div class="thumbnail"><img width="600" height="338" loading="lazy" src="{{ .Params.featured_Image | absURL }}" class="attachment-medium size-medium wp-post-image lazyloaded" alt="{{.Title}}"></div>
+                    <div class="title">{{.Title}}</div>
+                </a></li>
+                {{ end }}
+            </ul>
+        </div>
+    </aside>
+</aside>

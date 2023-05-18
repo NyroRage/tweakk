@@ -1,0 +1,113 @@
+<!-- Basic Meta Tags -->
+<meta charset="utf-8" />
+<meta name="language" content="english" />
+<meta property="og:locale" content="en_US" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:type" content="website" />
+<meta name="format-detection" content="telephone=yes" />
+<meta name="HandheldFriendly" content="true" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="distribution" content="web" />
+
+<!-- Robots Metas -->
+{{- partial "basic/head/robots" . -}}
+
+<!-- Stylesheets -->
+{{- partial "basic/head/stylesheet" . -}}
+
+<!-- Favicon Tags -->
+{{- with .Site.Params.icon -}}
+<link rel="icon" href="{{- . | absURL }}" />
+<link rel="apple-touch-icon" href="{{- . | absURL }}" />
+<meta name="msapplication-TileImage" content="{{- . | absURL }}" />
+{{- end }}
+
+<!-- Title Meta Tags -->
+{{- partial "basic/head/title" . }}
+<meta property="og:site_name" content="{{.Site.Title}}" />
+
+<!-- Description Meta Tags -->
+{{- partial "basic/head/description" . -}}
+ 
+<!-- URL Metas -->
+{{- with .Paginator -}}
+<!-- Pagination Metas -->
+{{ if eq .PageNumber 1 -}}
+<link rel="canonical" href="{{$.Permalink}}" />
+<meta property="og:url" content="{{$.Permalink}}" />
+<meta property="twitter:url" content="{{$.Permalink}}" />
+{{- else -}}
+<link rel="canonical" href="{{ $.Permalink }}page/{{ .PageNumber }}/" />
+<meta property="og:url" content="{{ $.Permalink }}page/{{ .PageNumber }}/" />
+<meta property="twitter:url" content="{{ $.Permalink }}page/{{ .PageNumber }}/" />
+{{- end -}}
+<!-- Pagination Metas -->
+{{- else -}}
+<link rel="canonical" href="{{$.Permalink}}" />
+<meta property="og:url" content="{{$.Permalink}}" />
+<meta property="twitter:url" content="{{$.Permalink}}" />
+{{- end -}}
+
+<!-- Open Graph Meta -->
+{{- if .Params.featured_Image }}
+<meta property="og:image" content="{{- .Params.featured_Image | absURL }}" />
+{{ else }}
+<meta property="og:image" content="{{- site.Params.open_graph.image | absURL }}" />
+{{- end }}
+<meta property="og:image:width" content="{{- site.Params.open_graph.imageW | default " 1200" }}" />
+<meta property="og:image:height" content="{{- site.Params.open_graph.imageH | default " 680" }}" />
+<meta name="twitter:card" content="summary_large_image">
+{{- with site.Params.open_graph.FacebookPublisher }}
+<meta property="article:publisher" content="{{.}}">
+{{- end }}
+{{- with site.Params.open_graph.FacebookAuthor }}
+<meta property="article:author" content="{{.}}">
+{{- end }}
+{{- with site.Params.open_graph.TwitterPublisher }}
+<meta name="twitter:site" content="{{.}}">
+{{- end }}
+{{- with site.Params.open_graph.TwitterAuthor }}
+<meta name="twitter:creator" content="{{.}}">
+{{- end -}}
+
+<!-- Page Specific Open Graph Tags -->
+{{- if .IsPage -}}
+{{- with .Date }}
+<meta property="article:published_time" content="{{- time . }}" />
+{{- end }}
+{{- with .Params.updateDate }}
+<meta property="article:modified_time" content="{{- time . }}" />
+<meta property="og:updated_time" content="{{- time . }}" />
+{{- end }}
+<meta name="twitter:label1" content="Written by" />
+<meta name="twitter:data1" content="{{.Params.author}}" />
+{{- with .Params.categories }}
+<meta property="article:section" content="{{index . 0 }}">
+{{- end -}}
+{{- with .Params.tags }}
+<meta property="article:tag" content="{{index . 0 }}">
+{{- end -}}
+{{- end -}}
+
+{{- if (fileExists "layouts/partials/basic/head/custom.html") -}}
+{{- partial "basic/head/custom" . -}}
+{{- end }}
+
+<!-- Site Verfications -->
+{{- if .IsHome}}
+{{- with site.Params.verifications.googleSiteVerify }}
+<meta name="google-site-verification" content="{{.}}" />
+{{- end }}
+{{- with site.Params.verifications.BingWebmaster }}
+<meta name="msvalidate.01" content="{{.}}" />
+{{- end }}
+{{- with site.Params.verifications.PinterestVerify }}
+<meta name="p:domain_verify" content="{{.}}" />
+{{- end }}
+{{- with site.Params.verifications.YandexVerify }}
+<meta name="yandex-verification" content="{{.}}" />
+{{- end }}
+{{- end -}}

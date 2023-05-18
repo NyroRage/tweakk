@@ -1,0 +1,17 @@
+{{- $comma := false -}}
+{
+    "items" : [
+    {{ range where $.Site.RegularPages "Section" "ne" "pages"  -}}
+    {{- if $comma -}},{{- end -}}{
+        
+        "url" : "{{ .Permalink }}",
+        "title" : "{{ .Title }}",
+        "content": {{- with .Params.meta_Description }}
+                    {{- . | plainify | jsonify}}
+                    {{- else}}
+                    {{- .Summary | plainify | jsonify}}
+                    {{- end }}
+    }{{- $comma = true -}}
+    {{ end -}}
+    ]
+}

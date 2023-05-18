@@ -1,0 +1,63 @@
+img_section = []
+logo = "/uploads/logo.webp"
+tagline = "Build your dream gaming setup, today"
+contacteMail = "admin@techiesmag.com"
+PopularCat = "Best Picks"
+trendingCat = "Knowledge Base"
+scroll_section = []
+icon = "/uploads/favicon.webp"
+
+[fonts]
+bodyFont = ""
+heading = ""
+
+[colors]
+mainColor = "#048376"
+textColor = "#fff"
+linkColor = "#0715a4"
+ctaColor = "#7A14D8"
+ctaColorBG = "#e65100"
+ctaColorText = "#ffffff"
+
+[siteRobots]
+catIndex = true
+postIndex = false
+pageIndex = true
+homeIndex = false
+blogIndex = false
+reviewIndex = false
+
+[home_setting]
+footerText = "Techies Mag is part of Niche Giant Inc. a leading digital publisher and marketing company"
+headerText = "There may be some affiliate links in articles that make us commission on every purchase by users without any additional cost. [Read More](https://www.techiesmag.com/affiliate-disclosure/)"
+blogSection = false
+headerStyle = "Style 1"
+
+[post_setting]
+show_comments = true
+featured_img = false
+
+[amznTracking]
+global = "can-techiesmag10-20"
+topProducts = "can-techiesmag-12-20"
+table = "can-techiesmag-tb-20"
+review = "can-techiesmag-re-20"
+
+[open_graph]
+meta_Description = "Build your dream setup by procuring expert-level guidelines, and select from a variety of options to build the rig and enhance your gaming experience."
+image = "/uploads/logo.webp"
+FacebookPublisher = "https://www.facebook.com/techiesmagsite"
+TwitterPublisher = "https://twitter.com/techies_mag"
+FacebookAuthor = "https://www.facebook.com/zaheerulislam25/"
+
+[verifications]
+googleSiteVerify = "GtUORcGEKa5p_7Z2-JVr_aMdDSnZhPOOak3Zr1h5QSw"
+BingWebmaster = "D7E1E2A3F664B41D163F73398F495C2D"
+PinterestVerify = "87683ebd3c9d44ae266d90150b5b7fb0"
+
+[social_accounts]
+sitefbAccount = "https://www.facebook.com/techiesmagsite/"
+sitetwitterAccount = "https://twitter.com/techies_mag"
+siteinstagramAccount = "https://www.instagram.com/techiesmag/"
+sitepinterestAccount = "https://www.pinterest.com/techiesmag/"
+siteYouTubeAccount = "https://www.youtube.com/channel/UCHZ6QbKwxZy08cBtAlDzWHg"

@@ -1,0 +1,106 @@
+.fs-recent-posts {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative
+}
+
+.fs-recent-posts .recent-posts-container {
+    width: 75%
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #dedede;
+
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card .thumbnail-link {
+    width: 48%
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card .post-info {
+    width: 50%
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card .post-info a.post-category-link {
+    font-size: .675rem;
+    padding-bottom: 2px
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card .post-info .post-title {
+    font-size: 20px;
+    margin-bottom: 10px
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card .post-info .post-meta {
+    font-size: .75rem;
+    margin-bottom: 10px
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card .post-info .post-excerpt {
+    font-size: 14px;
+    margin-bottom: 0
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card .thumbnail img,
+.ez-category-section img {
+    width: 100%;
+    border-radius: 10px 10px 0 0
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card:hover .thumbnail img {
+    opacity: .9
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card:nth-child(4n+4) {
+    flex-direction: column
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card:nth-child(4n+4) .thumbnail-link, .fs-recent-posts .recent-posts-container .recent-post-card:nth-child(4n+4) .post-info {
+    width: 100%
+}
+
+.fs-recent-posts .recent-posts-container .recent-post-card:nth-child(4n+4) .post-info .post-title {
+    font-size: 30px
+}
+
+.fs-recent-posts .trending-posts-container {
+    width: 23%
+}
+
+.fs-recent-posts .trending-posts-container .trending-posts-inside-container {
+    position: sticky;
+    top: 30px
+}
+
+.fs-recent-posts .trending-posts-container .fs-popular-posts ul {
+    margin: 0
+}
+
+.fs-recent-posts .trending-posts-container .fs-popular-posts ul li a {
+    border-bottom: none
+}
+
+.fs-recent-posts .trending-posts-container .fs-popular-posts ul li a:hover {
+    background: none;
+    color: #000
+}
+
+@media (max-width:768px) {
+    .fs-recent-posts, .fs-recent-posts .recent-posts-container .recent-post-card {
+        flex-direction: column
+    }
+
+    .fs-recent-posts .recent-posts-container, .fs-recent-posts .trending-posts-container {
+        width: 100%
+    }
+
+    .fs-recent-posts .recent-posts-container .recent-post-card .thumbnail-link, .fs-recent-posts .recent-posts-container .recent-post-card .post-info {
+        width: 100%
+    }
+}

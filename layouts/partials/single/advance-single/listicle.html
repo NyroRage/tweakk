@@ -1,0 +1,39 @@
+{{ if .Params.the_products }}
+<style>
+    .products-list {
+        box-shadow: 0 5px 10px rgb(32 32 58 / 25%);
+        border-right: 1px solid #e0e0e2;
+        border-bottom: 1px solid #e0e0e2;
+        border-top: 1px solid #e0e0e2;
+        border-left: 10px solid var(--brand-color-1);
+        border-radius: 5px;
+        padding: 30px;
+        margin-bottom: 25px;
+    }
+    .products-list h2 {
+        font-size: 22px;
+    }
+    .products-list a{
+        color: #2675d1;
+        text-decoration: none;
+        transition: all .2s ease;
+    }
+    .products-list a:hover{
+        border-bottom: 1px solid #4a4a4a;
+    }
+</style>
+<div class="products-list">
+    <h2 id="quick-picks" class="ignore-toc">The {{.Title}} - Quick Picks</h2>
+    <ol style="margin-bottom: 0px">
+        {{ range .Params.the_products }}
+            <li>
+                {{ if .amzlink }}
+                <a href="https://techiesmag.com/go?prod_id={{.amzlink}}&ref={{$.Title | urlize}}&from=listicle" rel="sponsored noopener" title="{{.name}}" target="_blank">    
+                {{ else }}
+                <a href="https://www.amazon.com/s?k={{.name}}&tag=techiesmag10-20" rel="sponsored noopener" title="{{.name}}" target="_blank">  
+                {{ end }}  
+                <b>{{.name}}</b></a>{{ with .award }} – {{.}} {{ end }}</li>
+        {{ end }}
+    </ol>
+</div>
+{{ end }}

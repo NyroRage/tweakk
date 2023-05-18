@@ -1,0 +1,7 @@
+{{ partial "ads/above-content.html" . }}
+{{ partial "single/advance-single/introduction.html" . }}
+{{ partial "single/advance-single/products-2.html" . }}
+{{ if .Content }}
+<p>{{ .Content | htmlUnescape | safeHTML }}</p>
+{{ end }}
+{{ partial "single/advance-single/faqs" . }}

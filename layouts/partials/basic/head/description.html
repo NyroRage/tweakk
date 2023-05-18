@@ -1,0 +1,47 @@
+<!-- HomePage Description Tags -->
+{{- if .IsHome }}
+{{- with .Site.Params.open_graph.meta_Description -}}
+<meta name="description" content="{{.}}" />
+<meta property="og:description" content="{{.}}" />
+<meta property="twitter:description" content="{{.}}" />
+{{- end -}}
+{{- end -}}
+
+<!-- Pages Description Tags -->
+{{- if .IsPage -}}
+{{- with .Params.meta_Description -}}
+<meta name="description" content="{{.}}" />
+<meta property="og:description" content="{{.}}" />
+<meta property="twitter:description" content="{{.}}" />
+{{- end -}}
+{{- end -}}
+
+{{- if .Site.Data.categories -}}
+<!-- Category With Meta Description -->
+{{- $category := index .Site.Data.categories (.Title | anchorize) -}}
+{{- with $category.meta_Description -}}
+<meta name="description" content="{{.}}" />
+<meta property="og:description" content="{{.}}" />
+<meta property="twitter:description" content="{{.}}" />
+{{- end -}}
+{{- end -}}
+
+{{- if .Site.Data.tags -}}
+<!-- Tags With Meta Description -->
+{{- $tag := index .Site.Data.tags (.Title | anchorize) -}}
+{{- with $tag.meta_Description }}
+<meta name="description" content="{{.}}" />
+<meta property="og:description" content="{{.}}" />
+<meta property="twitter:description" content="{{.}}" />
+{{- end -}}
+{{- end -}}
+
+{{- if .Site.Data.authors -}}
+<!-- Author Title -->
+{{- $author := index .Site.Data.authors (.Title | anchorize) }}
+{{- with $author.bio -}}
+<meta name="description" content="{{- . | truncate "150" -}}" />
+<meta property="og:description" content="{{- . | truncate "150" -}}" />
+<meta property="twitter:description" content="{{- . | truncate "150" -}}" />
+{{- end -}}
+{{- end -}}

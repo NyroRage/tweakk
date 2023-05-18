@@ -1,0 +1,112 @@
+{{ with .Params.the_products }}
+<style>
+    .ez-top3-table{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+        margin-block: 2em;
+    }
+    @media only screen and (min-width:1024px){
+        .ez-top3-table{
+            margin-left: -70px;
+            width: calc(100% + 150px);
+            max-width: calc(100% + 150px);
+        }
+    }
+    @media only screen and (max-width:1024px){
+        .ez-top3-table{
+            grid-template-columns: none;
+        }
+        .ez-top3-item .award-info{
+            padding-block: 10px;
+        }
+    }
+    .ez-top3-item{
+        display: block;
+        border-radius: 8px;
+        border-bottom: 10px solid var(--brand-color-2);
+        box-shadow: 0px 5px 10px -5px var(--brand-color-1);
+        height: 100%;
+    }
+    .ez-top3-item .award-info{
+        display: block;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background-color: var(--brand-color-2);
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        padding-block: 5px;
+    }
+    .ez-top3-product-details{
+        display: flex;
+        padding: 2em 1.5em;
+        width: 100%;
+        gap: 1em;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 90%;
+    }
+    .ez-top3-item-name, .ez-top3-item-detail-cta{
+        font-weight: bold;
+    }
+    .ez-top3-item-detail-cta a{
+        font-weight: 300;
+        text-transform: uppercase;
+        border-bottom: 1px solid;
+        color: var(--brand-color-2);
+    }
+    .ez-top3-item-detail-cta a:hover{
+        border-bottom: 1px solid black;
+        color: var(--brand-color-1);
+    }
+    .ez-product-info, .ez-top3-details{
+        width: -webkit-fill-available;
+        text-align: center;
+    }
+    .ez-top3-item .product-table-cta{
+        margin-top: 1em;
+        background-color: var(--brand-color-1) !important;
+        background-image: none;
+        min-width: auto;
+    }
+    .ez-top3-features p{
+        margin: 0;
+        text-align: left;
+    }
+    .ez-top3-features p:before{
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' xml:space='preserve'%3E%3Cg id='verified-author-ab' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M25 45.3 17.6 49l-3.9-7.6-8.1-1.6 1.1-8.6L1 25l5.7-6.3-1.1-8.6 8.1-1.6L17.6 1 25 4.7 32.4 1l3.9 7.6 8.1 1.6-1.1 8.6L49 25l-5.7 6.3 1.1 8.6-8.1 1.6-3.9 7.5-7.4-3.7z' fill='%234285f4'%3E%3C/path%3E%3Cpath d='M20.9 27.7 17 23.8l-3.4 3.4 3.8 3.8 3.4 3.4 3.4-3.4 12-12-3.4-3.4-11.9 12.1z' fill='%23fff'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+        display: inline-block;
+        margin-right: 10px;
+        width: 15px;
+        font-size: 10px;
+    }
+</style>
+<div class="ez-top3-table">
+    {{ range first 3 . }}
+    {{ $title := replaceRE "Best" "" $.Title }}
+    {{ $award := replaceRE $title "" .award }}
+        <div class="ez-top3-item">
+            {{ with $award }}<div id="award-item-info" class="award-info">{{.}}</div>{{ end }}
+            <div class="ez-top3-product-details">
+                <div class="ez-product-info">
+                    <img src="{{.image}}" width="150" height="150" alt="{{.name}}">
+                    <div class="ez-top3-item-name">{{.name}}</div>
+                    <div class="ez-top3-item-detail-cta"><a href="#{{.name | replaceRE " " "-" | lower }}">Read More</a></div>
+                </div>
+                <div class="ez-top3-details">
+                    {{ if .pros }}
+                    <div class="ez-top3-features">
+                        {{range first 3 .pros}}
+                        <p>{{.pro}}</p>
+                        {{end}}
+                    </div>
+                    {{end}}
+                    <a title="{{.name}}" class="product-table-cta" href="https://www.amazon.com/dp/{{.amzlink}}?tag={{site.Params.amznTracking.table}}" target="_blank" rel="sponsored noopener noreferrer">See on Amazon</a>
+                </div>
+            </div>
+        </div>
+    {{ end }}
+</div>
+{{ end }}

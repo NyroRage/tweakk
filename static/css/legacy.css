@@ -1,0 +1,212 @@
+div.elementor-element.price-button a.elementor-button-link {
+    padding: 20px
+}
+
+div.elementor-element.price-button a.elementor-button-link .elementor-button-text {
+    font-size: 30px
+}
+
+body.archive #main .post-image a img, body.blog #main .post-image a img, body.search #main .post-image a img {
+    width: 100%
+}
+
+h4[style*="color: white"], h3[style*="color: white"] {
+    color: #000 !important
+}
+
+.fs-legacy-img {
+    margin-bottom: 20px
+}
+
+.fs-legacy-img img {
+    max-width: 320px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto
+}
+
+h3.amp-wp-2f5beb9 {
+    color: #000 !important
+}
+
+h4.amp-wp-2f5beb9+ul {
+    list-style: none;
+    margin-left: 1.5em;
+    margin-bottom: 1.5em
+}
+
+h4.amp-wp-2f5beb9+ul li:before {
+    color: #ed6f2e;
+    content: "\2022";
+    font-weight: 700;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em
+}
+
+p>img, .fs-legacy-img>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.bg-product-image img {
+    max-height: 420px;
+    width: auto
+}
+
+.award-winner-card .award-offer a {
+    font-size: 15px !important
+}
+
+table.tablepress .fs-legacy-su-button {
+    padding: 10px 0;
+    width: fit-content
+}
+
+table.tablepress .fs-legacy-su-button:hover {
+    opacity: .75
+}
+
+table.tablepress .fs-legacy-su-button a {
+    color: #fff;
+    text-align: center;
+    background-color: #078831;
+    padding: 10px 5px;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+table.tablepress.legacy-tp thead th:not(:first-child), table.tablepress.legacy-tp tbody tr td:not(:first-child), table.tablepress.bg_p thead th:not(:first-child), table.tablepress.bg_p tbody tr td:not(:first-child) {
+    text-align: center
+}
+
+table.tablepress.legacy-tp thead tr th:last-child, table.tablepress.bg_p thead tr th:last-child {
+    display: none
+}
+
+table.tablepress.legacy-tp .fs-legacy-su-button, table.tablepress.bg_p .fs-legacy-su-button {
+    margin-left: auto
+}
+
+table.tablepress.legacy-tp .bg_product, table.tablepress.bg_p .bg_product {
+    display: flex;
+    align-items: center
+}
+
+table.bg_p tbody tr td .bg_product>:first-child {
+    width: 30%;
+    margin-right: 10px
+}
+
+table.tablepress.legacy-tp .bg_product img, table.tablepress.bg_p .bg_product img {
+    width: 70px;
+    object-fit: cover
+}
+
+table.tablepress.legacy-tp .bg_product a, table.tablepress.bg_p .bg_product a {
+    margin-left: 0;
+    font-weight: 700
+}
+
+table.tablepress tr td .pricebutton_amz_content a, table.tablepress.legacy-tp tr>td:last-child a {
+    display: block;
+    background: linear-gradient(to left, #ff9856, #ff7c54);
+    color: #fff;
+    padding: 8px;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden
+}
+
+table.tablepress tr td .pricebutton_amz_content a:hover, table.tablepress.legacy-tp tr>td:last-child a:hover {
+    background: linear-gradient(to left, #009688, #4caf50)
+}
+
+table.tablepress.bg_p thead tr th {
+    border: 1px solid #fff
+}
+
+table.tablepress.bg_p .bg_p__d_mob {
+    display: none
+}
+
+table.tablepress.bg_p.bg_cat thead tr th.column-2, table.tablepress.bg_p.bg_cat tbody tr td.column-2 {
+    text-align: left
+}
+
+table.tablepress.bg_p.bg_cat tbody tr td .bg_product a:hover {
+    color: var(--brand-color-1)
+}
+
+@media(max-width:1140px) {
+    table.bg_p tbody {
+        border-top: 1px solid #e6e6e6
+    }
+
+    table.bg_p.bg_cat tbody {
+        border-top: none
+    }
+
+    table.bg_p tbody tr .bg_cat__head_title, table.bg_p tbody tr:hover .bg_cat__head_title {
+        background: var(--table-header-color);
+        color: #fff;
+        text-align: center;
+        font-size: 24px
+    }
+
+    table.bg_p tbody tr {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e6e6e6;
+        margin-bottom: 20px
+    }
+
+    table.bg_p tbody tr td {
+        border: none
+    }
+
+    table.bg_p tbody tr td:last-child {
+        padding: 0
+    }
+
+    table.bg_p tbody tr td .bg_product {
+        display: flex;
+        flex-direction: column
+    }
+
+    table.bg_p tbody tr td .bg_product>:first-child {
+        max-width: 150px;
+        width: 150px;
+        margin-right: 0
+    }
+
+    table.tablepress.bg_p .bg_product img {
+        width: 150px;
+        margin-bottom: 10px
+    }
+
+    table.tablepress.bg_p .bg_product a {
+        margin-left: 0;
+        font-size: 22px;
+        color: var(--brand-color-1)
+    }
+
+    table.bg_p tbody tr td .pricebutton_amz_content a {
+        font-size: 22px
+    }
+
+    table.tablepress.legacy-tp thead tr th, table.tablepress.bg_p thead tr th {
+        display: none
+    }
+
+    table.tablepress.bg_p .bg_p__d_mob {
+        display: block;
+        margin-bottom: 5px
+    }
+
+    table.tablepress.bg_p.bg_cat thead tr th.column-2, table.tablepress.bg_p.bg_cat tbody tr td.column-2 {
+        text-align: center
+    }
+}

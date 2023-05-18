@@ -1,0 +1,15 @@
+{{ if .Params.faqs }}
+<div id="frequently-asked-questions" style="margin-bottom:1.5rem; padding:1rem 1.5rem; background-color:#eee" itemscope itemtype="https://schema.org/FAQPage">
+    <h2 class="ez-faqs-heading">Frequently Asked Questions</h2>
+    {{ range .Params.faqs }}
+    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="faq bg-white pa2-5 pr2-5 mb2-5">
+        <h3 class="ez-question-heading" style="font-size:22px" itemprop="name" id="{{ .question | anchorize }}">{{ .question }}</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div class="ma0" itemprop="text">
+                <p>{{.answer | markdownify }}</p>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}

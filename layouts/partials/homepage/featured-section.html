@@ -1,0 +1,52 @@
+<section class="fs-featured-post">
+    {{ range first 1 ( where .Site.RegularPages.ByDate.Reverse "Section" "ne" "pages") }}
+        <article class="column-1">
+            <div class="thumbnail">
+                <a href="{{.Permalink}}" >
+                    <img loading="lazy" width="1200" height="675" src="{{ .Params.featured_Image | absURL }}" class="attachment-full size-full wp-post-image" alt="{{.Title}}">
+                </a>
+            </div>
+            <div class="post-info">
+                {{ with .Params.categories }}
+                    <div class="post-category">
+                        <a class="post-category-link" href="{{ index . 0 | urlize | absURL }}/" title="{{ index . 0 }}"
+                            >{{ index . 0 }}</a>
+                    </div>
+                {{ end }}
+                <h1 class="post-title ignore-toc">
+                    <a class="post-title-link" href="{{.Permalink}}"
+                        title="{{.Title}}" >{{.Title}}</a>
+                </h1>
+                <div class="post-meta">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="far" data-icon="calendar-alt"
+                        class="svg-inline--fa fa-calendar-alt fa-w-14" viewBox="0 0 448 512">
+                        <path fill="currentColor" d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z">
+                        </path>
+                    </svg>
+                    <time class="post-date" datetime="{{.Params.updateDate}}">{{dateFormat "January 2, 2006" .Params.updateDate}}</time>
+                </div>
+                <!--
+                {{ with .Params.front_Subtitle }}
+                <p class="post-excerpt">{{.}}</p>
+                {{ end }}
+                -->
+            </div>
+        </article>
+    {{ end }}
+    <div class="column-2">
+        <div class="fs-latest-posts">
+            <h2 class="latest-posts-heading ignore-toc">Latest Posts</h2>
+            {{ range first 6 (after 1 ( where .Site.RegularPages.ByDate.Reverse "Section" "ne" "pages")) }}
+                <article class="recent-post-card">
+                    <div class="thumbnail">
+                        <a href="{{.Permalink}}" >
+                            <img loading="lazy" width="600" height="338" src="{{ .Params.featured_Image | absURL }}" class="attachment-medium size-medium wp-post-image" alt="{{.Title}}"></a>
+                    </div>
+                    <h3 class="post-title ignore-toc">
+                        <a href="{{.Permalink}}" >{{.Title}}</a>
+                    </h3>
+                </article>
+            {{ end }}
+        </div>
+    </div>
+</section>

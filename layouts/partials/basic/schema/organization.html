@@ -1,0 +1,34 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}",
+      "url": "{{ .Site.BaseURL }}",
+      "logo": "{{ .Site.Params.logo | absURL }} ",
+      {{ with .Site.Params.social_accounts }}
+      "sameAs": [
+        "{{site.Params.social_accounts.sitefbAccount}}",
+        "{{site.Params.social_accounts.sitetwitterAccount}}",
+        "{{site.Params.social_accounts.sitepinterestAccount}}",
+        "{{site.Params.social_accounts.siteYouTubeAccount}}"
+      ],
+      {{ end }}
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "{{ .Site.Params.contacteMail }}",
+          "areaServed": [
+            "US",
+            "CA",
+            "GB",
+            "ES",
+            "IT",
+            "FR",
+            "DE"
+          ],
+          "availableLanguage": "en"
+        }
+      ]
+    }
+</script>

@@ -1,0 +1,36 @@
+<style>
+    .ez-news-section-lists{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+    .ez-news-list-item{
+        display: grid;
+        grid-template-columns: 2fr 8fr;
+    }
+    .ez-news-list-item{
+        display: grid;
+        grid-template-columns: 3fr 7fr;
+        align-items: center;
+        gap: 10px;
+    }
+    @media only screen and (max-width:768px){
+        .ez-news-section-lists{
+            grid-template-columns:none
+        }
+    }
+</style>
+<section class="ez-section ez-news-section">
+    <h2 class="ez-section-widget-title ez-news-section-title">Today Best Deals</h2>
+    <div class="ez-news-section-lists">
+        {{ range first 12 ( where .Site.RegularPages.ByDate.Reverse "Section" "ne" "pages")  }}
+            <div class="ez-news-list-item">
+                <a href="{{.Permalink}}" title="{{.Title}}"><img class="ez-right-image" loading="lazy" src="{{ .Params.featured_Image | absURL }}" alt="{{.Title}}"></a>
+                <div class="info">
+                    {{ with .Params.categories }}<div class="ez-cat-post-info"><a class="category" href="{{ index . 0 | urlize | absURL }}/" title="{{ index . 0 }}">{{ index . 0 }}</a></div>{{ end }}
+                   <h3 class="ez-post-title ez-news-post-title"><a href="{{.Permalink}}" title="{{.Title}}">{{.Title}}</a></h3>
+                </div>
+            </div>
+        {{ end }}
+    </div>
+</section>

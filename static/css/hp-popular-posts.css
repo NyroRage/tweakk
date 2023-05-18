@@ -1,0 +1,98 @@
+section.fs-popular-posts {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    counter-reset: popular-rank
+}
+
+.popular-posts-container {
+    display: flex;
+    gap: 15px
+}
+
+.popular-posts-container article {
+    width: 19%
+}
+
+.popular-posts-container article .post-info {
+    padding: 10px 5px 0 30px;
+    position: relative
+}
+
+.popular-posts-container article .post-info:before {
+    counter-increment: popular-rank;
+    content: counter(popular-rank);
+    position: absolute;
+    left: 0;
+    top: 4px;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 28px;
+    font-weight: 700;
+    color: #969696;
+    opacity: .4;
+    font-style: italic;
+    width: 3rem
+}
+
+.popular-posts-container article .post-info .post-category {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 5px
+}
+
+.popular-posts-container article .post-info .post-category a {
+    color: var(--brand-color-2)
+}
+
+.popular-posts-container article .post-info .post-title {
+    font-size: 16px
+}
+
+.popular-posts-container article .post-info .post-title a {
+    display: flex
+}
+
+.popular-posts-container article .post-info .post-title a:hover {
+    opacity: .9
+}
+
+.popular-posts-container article .thumbnail img {
+    vertical-align: middle
+}
+
+.popular-posts-container article:hover .thumbnail img {
+    opacity: .9;
+    transition: all .15s ease
+}
+
+.popular-posts-container article:hover .post-info .post-title a {
+    text-decoration: underline
+}
+
+@media(max-width:920px) {
+    .popular-posts-container article .post-info .post-title a {
+        font-size: 14px
+    }
+}
+
+@media(max-width:768px) {
+    .popular-posts-container {
+        flex-direction: column
+    }
+
+    .popular-posts-container article {
+        width: 100%;
+        margin-bottom: 30px
+    }
+
+    .popular-posts-container article .post-info .post-title {
+        margin-bottom: 0
+    }
+
+    .popular-posts-container article .post-info .post-title a {
+        font-size: 18px;
+        line-height: 1.4
+    }
+}

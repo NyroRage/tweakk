@@ -1,0 +1,10 @@
+<img loading="lazy" src="{{ .Get "src" | absURL }}" class="lazyload simple-img
+{{- if .Get "align" }} align-{{ .Get "align" }} {{- end }}
+{{- if .Get "size" }} resize-{{ .Get "size" }} {{- end -}}" 
+
+{{- if .Get "width" -}} width="{{ .Get "width" }}" {{- end -}}
+{{- if .Get "height" -}} height="{{ .Get "height" }}" {{- end -}}
+
+{{- if .Get "alt" -}} alt="{{ .Get "alt" }}" {{- end -}}
+{{- if .Get "title" -}} title="{{ .Get "title" }}" {{- end -}}
+>

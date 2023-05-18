@@ -1,0 +1,75 @@
+{{- $.Scratch.Set "position" 1 -}}
+{{ if .Params.product_Mheading }}
+<h2 id="{{ .Params.product_Mheading | lower | replaceRE " " "_" }}" >{{.Params.product_Mheading}}</h2>
+{{else if .Params.the_products}}
+<h2 id="{{ .Title | lower | replaceRE " " "_" }}">{{.Title}} Reviews</h2>
+{{end}}
+<!-- Product Previews -->
+{{ range .Params.the_products }}
+
+    <figure class="image-figure" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+        <div class="figure-img">
+                <img style="display:block;margin:auto;" loading="lazy" width="300" height="300" src="{{.image}}" alt="{{.name}}">
+        </div>
+        <meta itemprop="url" content="{{.image}}">
+        <meta itemprop="height" content="300">
+        <meta itemprop="width" content="300">
+    </figure>
+
+    <div class="product prog-buying-guide">
+        <div class="title__heading">
+                <h3 class="title__text" id="{{.name | urlize}}">{{.name}}</h3>
+        </div>
+        <div class="subtitle">
+            <h4>{{.award}}</h4>
+        </div>
+        <div class="amazon-link">
+            <h5 class="title-price">CHECK PRICE</h5>
+                <aside data-model-name="<?php echo $prod_name ?>" data-widget-type="price" data-render-type="editorial" data-result="rendered">
+                    <div class="price-retail-container">
+                        <a href="https://www.amazon.com/dp/{{.amzlink}}?linkCode=assoc-rails-rate-card-link-code-tw3&tag=can-techiesmag-12-20" aria-label="<?php echo $prod_name ?>" target="_blank" rel="sponsored noopener"
+                            class="btn btn-orange">View on Amazon</a>
+                    </div>
+                    {{ range .morebtns }}
+                    <div class="price-retail-container">
+                        <a href="{{.btnLink}}" target="_blank" rel="sponsored noopener"
+                            class="btn btn-orange">{{.btnName | title}}</a>
+                    </div>
+                    {{ end }}
+                </aside>
+        </div>
+        {{ if or (.pros) (.cons) }}
+        <div class="p-and-c">
+            <div class="mb2-5">
+                {{ if .pros }}
+                <div class="pros">
+                    <h5>PROS</h5>
+                    <div class="product-summary">
+                        <ul>
+                            {{range .pros}}
+                            <li><span class="teal f5">+</span>{{.pro}}</li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+                {{ end }}{{ if .cons }}
+                <div class="cons">
+                    <h5>CONS</h5>
+                    <div class="product-summary">
+                        <ul>
+                            {{range .cons}}
+                            <li><span class="f5">–</span>{{.con}}</li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    {{ range .paragraphs }}
+    <p>{{ .paragraph | markdownify }}</p>
+    {{ end }}
+    <hr>
+{{ end }}

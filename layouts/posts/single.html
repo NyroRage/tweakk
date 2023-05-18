@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article>
+        <div class="inside-article">
+            <div class="entry-content">
+                {{ partial "single/advance-single/index.html" . }}
+                {{ partial "single/related-posts.html" . }}
+            </div>
+        {{ partial "single/social-btns.html" . }}
+        {{ partial "single/single-author-box.html" . }}
+    </div>
+</article>
+
+{{ end }}

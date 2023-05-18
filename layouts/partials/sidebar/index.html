@@ -1,0 +1,10 @@
+<div class="widget-area sidebar is-right-sidebar no-mobile" id="right-sidebar">
+    <div class="inside-right-sidebar">
+        {{ if or (eq .Section "guides") }}
+            {{ partial "sidebar/widgets/auto-toc.html" . }}
+        {{ end }}
+        {{ if or (eq .Section "posts") }}
+            {{ partial "sidebar/widgets/product-toc.html" . }}
+        {{ end }}
+    </div>
+</div>

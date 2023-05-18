@@ -1,0 +1,32 @@
+{{- if .Site.Data.authors -}}
+{{ $author := index .Site.Data.authors (.Params.author | anchorize) }}
+<div class="author-box">
+    <div class="avatar">
+        {{ if $author.avatar }}
+        <img alt="{{ $author.name }}" loading="lazy" src="{{- $author.avatar -}}" class="avatar avatar-100 photo lazyloaded" height="100" width="100">
+        {{ else }}
+        <img alt="{{ $author.name }}" loading="lazy" src="{{.Site.Params.icon}}" class="avatar avatar-100 photo lazyloaded" height="100" width="100">
+        {{ end }}
+    </div>
+    <div class="author-info">
+        <strong class="author-title">
+            <span>{{ $author.name }}</span>
+        </strong>
+        <div class="author-summary">
+            <p class="author-description">{{ $author.bio }}</p><a class="author-bio-button"
+                href="/author/{{.Params.author | anchorize}}/" >More From {{ $author.name }}</a>
+        </div>
+        <div class="author-socials">
+            {{ with $author.authorFB }}    
+            <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="{{ $author.name }} Facebook" class="fs-facebook"><img loading="lazy" src="{{"/icons/facebook.svg" | absURL}}" alt="Facebook"></a>
+            {{ end }}{{ with $author.authorInsta }}
+            <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="{{ $author.name }} Instagram" class="fs-instagram"><img loading="lazy" src="{{"/icons/instagram.svg" | absURL}}" alt="Instagram"></a>
+            {{ end }}{{ with $author.authorTwitter }}
+            <a href="{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="{{ $author.name }} Twitter" class="fs-twitter"><img loading="lazy" src="{{"/icons/twitter.svg" | absURL}}" alt="Twitter"></a>
+            {{ end }}{{ with $author.authorMail }}
+            <a href="mailto:{{.}}" target="_blank" rel="noopener noreferrer nofollow external" title="{{ $author.name }} Email" class="fs-email"><img loading="lazy" src="{{"/icons/email.svg" | absURL}}" alt="Mail"></a>
+            {{ end }}
+        </div>
+    </div>
+</div>
+{{ end }}

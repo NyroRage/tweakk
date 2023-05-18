@@ -1,0 +1,18 @@
+<div class="fs-social-share-bottom">
+    <a class="facebook" aria-label="Share on Facebook"
+        href="https://facebook.com/sharer.php?u={{ .Permalink | absURL }}"
+        data-wpel-link="external" target="_blank"
+        rel="nofollow external noopener noreferrer"><span><span>Share</span></span></a>
+    <a class="twitter" aria-label="Share on Twitter"
+        href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink | absURL }}"
+        data-wpel-link="external" target="_blank"
+        rel="nofollow external noopener noreferrer"><span><span>Tweet</span></span></a>
+    <a class="pinterest" aria-label="Pin to Pinterest board"
+        href="https://www.pinterest.com/pin/create/button/?url={{ .Permalink | absURL }}&description={{ .Title }}&media={{.Params.featured_Image}}"
+        data-wpel-link="external" target="_blank"
+        rel="nofollow external noopener noreferrer"><span><span>Pin</span></span></a>
+    <a class="email" aria-label="Share via e-mail"
+        href="mailto:?subject={{.Title}}&amp;body=This topic will be usefull {{.Permalink | absURL}}"><span><span>Email</span></span></a>
+    <a class="pdf" title="Download PDF" aria-label="Download PDF" href="#" onclick="void( window.print() );"
+        &quot;=""><span><span>PDF</span></span></a>
+</div>

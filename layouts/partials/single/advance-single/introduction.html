@@ -1,0 +1,14 @@
+{{ if .Params.paragraphs }}
+<!-- Intro Paragraphs -->
+    {{ range first 1 .Params.paragraphs }}
+        <p>{{.paragraph | markdownify }}</p>
+    {{ end }}   
+        {{ partial "single/advance-single/summary" . }}
+    {{ range first 1 (after 1 .Params.paragraphs) }}
+        <p>{{.paragraph | markdownify }}</p>
+    {{ end }}
+        {{ partial "single/advance-single/content-toc" . }}
+    {{ range after 2 .Params.paragraphs }}
+        <p>{{.paragraph | markdownify }}</p>
+    {{ end }}
+{{ end }}

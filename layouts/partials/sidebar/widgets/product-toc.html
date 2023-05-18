@@ -1,0 +1,30 @@
+<style>
+    aside.widget {
+        background-color: #f7f7f7;
+        padding: 2em 1.5em !important;
+        margin-bottom: 3em !important;
+    }
+
+    aside.widget #TableOfContents ol {
+        list-style-type: decimal;
+        margin-left: 20px;
+    }
+
+    aside.widget #TableOfContents ol li {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    aside.widget #TableOfContents ol li::marker {
+        font-weight: bold;
+    }
+</style>
+<aside class="widget inner-padding">
+    <nav id="TableOfContents">
+    <ol>
+        {{ range .Params.the_products }}
+        <li><a href="#{{.name | urlize}}">{{.name}}</a></li>
+        {{ end }}
+    </ol>
+</nav>
+</aside>
